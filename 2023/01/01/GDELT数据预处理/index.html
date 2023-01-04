@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="WUJIHE">
+    
+    <title>
+        
+            GDELT数据预处理 |
+        
+        OCOC
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    <link rel="shortcut icon" href="/blog/images/logo.svg">
+    
+<link rel="stylesheet" href="/blog/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/css/brands.min.css">
+
+    
+<link rel="stylesheet" href="/blog/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/blog/css/regular.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/blog/css/css2.css">
+
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"wjhers.github.io","root":"/blog/","language":"en","path":"search.xml"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":""},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_block":{"copy":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.4.4"};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                OCOC
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/blog/" >
+                                
+                                    
+                                        <i class="fa-regular fa-house"></i>
+                                    
+                                    HOME
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/blog/archives" >
+                                
+                                    
+                                        <i class="fa-regular fa-archive"></i>
+                                    
+                                    ARCHIVES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/blog/tags" >
+                                
+                                    
+                                        <i class="fa-regular fa-tags"></i>
+                                    
+                                    TAGS
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/blog/categories" >
+                                
+                                    
+                                        <i class="fa-regular fa-folders"></i>
+                                    
+                                    CATEGORIES
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                        <li class="menu-item">
+                            <!-- Menu -->
+                            <a class="" 
+                                href="/blog/about" >
+                                
+                                    
+                                        <i class="fa-regular fa-user"></i>
+                                    
+                                    ABOUT
+                                
+                            </a>
+                            <!-- Submenu -->
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/blog/" >
+                         
+                            
+                                <i class="fa-regular fa-house"></i>
+                            
+                            HOME
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/blog/archives" >
+                         
+                            
+                                <i class="fa-regular fa-archive"></i>
+                            
+                            ARCHIVES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/blog/tags" >
+                         
+                            
+                                <i class="fa-regular fa-tags"></i>
+                            
+                            TAGS
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/blog/categories" >
+                         
+                            
+                                <i class="fa-regular fa-folders"></i>
+                            
+                            CATEGORIES
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="" 
+                       href="/blog/about" >
+                         
+                            
+                                <i class="fa-regular fa-user"></i>
+                            
+                            ABOUT
+                        
+                    </a>
+                </li>
+                <!-- Submenu -->
+                
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+            <div class="article-title">
+                <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">GDELT数据预处理</h1></span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/blog/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">WUJIHE</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-01-01 17:27:31</span>
+        <span class="mobile">2023-01-01 17:27</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>2.2k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>7 Mins</span>
+        </span>
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h1><p>我们从数据开源平台GDELT上下载事件数据集，该数据集记录了100多种语言来自各个国家几乎每个角落所发生的事件，同时以天为单位进行开源发布。我们选取的时间范围是2021年6月1日至2022年8月31日，共457天的事件集合，同时我们只关注以英语发布的新闻事件。</p>
+<p>为了得到与俄乌冲突相关的事件，我们对下载得到的数据集进行过滤与筛选，以确保数据的准确性。第一步，确定与俄罗斯或乌克兰相关的新闻链接。依据GDELT数据属性中Actor1CountryCode与Actor2CountryCode字段，筛选出与俄罗斯或乌克兰相关的新闻链接。第二步，确定俄乌冲突新闻链接。即需要确定第一步中每个新闻链接所提及的事件是与俄乌冲突相关，还是与这某一国的单方面的事件相关（例如，世界卫生组织关于报道俄罗斯新冠疫情的现状）。因此，我们针对第一步中的每个新闻链接，分析了原始数据中该新闻链接的所有事件，去除不相关的新闻链接，同时当一个新闻链接提到多个事件时，基于新闻报道的核心内容往往出现在新闻开始部分的假设，我们只保留第一个事件作为当前新闻链接的代表性事件。第三步，经过统计最终的数据集包含56,846个新闻链接，涉及3,310个新闻网站，涉及149个国家或组织。</p>
+<p><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="image-20230101210602068.png"
+                      alt="image-20230101210602068"
+                ></p>
+<h1 id="媒体特征编码与降维"><a href="#媒体特征编码与降维" class="headerlink" title="媒体特征编码与降维"></a>媒体特征编码与降维</h1><p>俄乌冲突涉及的国家与新闻媒体众多，我们很难一次性发现所有媒体之间的偏差。因此，我们希望能够对新闻媒体进行聚类或集群分析，进而通过探索代表性媒体了解媒体之间的新闻偏差。我们分别实现了三种媒体特征建模的方法，同时也对比了三种降维方法。</p>
+<p>特征建模方法一，利用新闻媒体事件报道的变化趋势来代表媒体，其中EventRootCode描述了不同媒体报道20类事件的变化情况，GoldsteinScale描述了不同媒体报道的事件对国家产生的潜在影响，NumMentions描述了数据库内所有文章提及该事件的次数，NumSources描述了数据库内提及该事件的数据源的次数，NumArticles描述了数据库内包含一个或多个此事件的源文档的总数，AvgTone描述了数据库内所有文章提及该事件时“语气”的平均值。我们为每一个媒体统计了这六个特征457天的变化情况，其中EventRootCode统计的是事件报道的个数，其余特征统计的是具体特征的平均值。最终每个媒体可以用6个特征矩阵来描述，每个矩阵是<script type="math/tex">20{\times}457</script>大小，描述了20类事件被报道的情况。</p>
+<p>特征建模方法二，基于卷积的变分自编码器特征提取（VAE）。由于特征建模方法一中每个媒体被描述为<script type="math/tex">6{\times}20{\times}457</script>大小的矩阵，维度灾难对降维结果的影响较为严重。在特征建模方法一的基础上，将每个媒体的6个特征矩阵看作“图片”输入基于卷积的变分自编码器中提取隐变量来代表新闻媒体。隐变量的长度为36。</p>
+<p>特征建模方法三，基于皮尔逊系数的相关性特征提取。我们以所有媒体在6大特征上的表现为基准（基准媒体），分别计算单个媒体与基准媒体在6个特征上的相关性，使用相关性结果来代表每个媒体。</p>
+<p>不同的媒体特征构建方法，可以构成不同的媒体可视化设计空间嵌入表示。基于嵌入表示的向量之间的欧氏距离可以度量媒体之间的相似度。同时这种潜在的可视化设计空间也蕴含了媒体集群、分布情况。为了提高降维结果的可读性，我们将潜在的媒体可视化设计空间缩小为二维欧几里得空间，同时通过设置代表性媒体节点引导用户的探索分析。</p>
+<p>我们对比了上述三种特征建模结果分别在tSNE、UMAP、MDS三种降维方法上的效果。由于在降维过程中考虑到维度灾难与可视分析交互的时效性，我们的可视化系统选择了第三种特征建模方法，即基于皮尔逊系数的相关性特征提取。我们构建了一个基准媒体，该基准媒体EventRootCode代表了所有媒体每天报道20类事件个数的变化情况，GoldsteinScale、NumMentions、NumSources、NumArticles、AvgTone代表了所有媒体每天报道20类事件各自特征的均值变化情况。与基准媒体的构建方式一样，每个单一媒体将这6项特征与基准媒体的6项特征分别计算皮尔逊相关系数与置信程度的乘积，其6维结果被视为媒体的嵌入表示。</p>
+<h1 id="代表性媒体的引导性探索"><a href="#代表性媒体的引导性探索" class="headerlink" title="代表性媒体的引导性探索"></a>代表性媒体的引导性探索</h1><p>通过基于皮尔逊系数的相关性特征提取，获得了媒体可视化设计空间的嵌入表示，同时将6维度空间缩小为二维欧几里得空间，为了更好地引导用户探索分析，其一，我们提供一个基于密度的轮廓图，其向用户展示了媒体的分布情况。其二，我们显示了具有代表性的媒体的节点，这些代表性节点帮助用户了解特定范围内的可选媒体是否满足他们的要求。其三，保持媒体集群之间的边界。因此，用户可以决定是否以更精细的粒度进行探索。为了保持相邻媒体与用户感知的相对相似，因此可以仅显示具有代表性的媒体。为了在不同的缩放级别显示代表性媒体，对媒体集合进行分层聚类，并在不同的聚类级别计算聚类中的代表项目。</p>
+<p>不同媒体的嵌入表示可以认为是不同特征属性的组合。因此，在选择代表性媒体应该覆盖更多的属性或属性组合。与此同时，不同的属性值也具有不同数量的关联媒体。例如，以EventRootCode特征为例（即媒体报道新闻数量），大多数媒体报道关于俄乌冲突的事件数量在10-50之间，极少数媒体报道数量超过1,000。因此，假如借助随机抽样方法所选择的媒体其事件数量大多都在10-50之间，另外随机抽样技术假设不同特征对媒体的影响程度相同。我们设计了一个动态的层级代表性媒体选择算法，从而支持用户在细粒度探索时选择最具代表性的媒体节点。</p>
+<font color=red>代表性节点选择的算法 改为一段文字。</font>
+
+
+
+
+
+
+
+
+
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">M 代表媒体集合</span><br><span class="line">F 代表媒体设计空间中的特征列表，每个特征表示为<span class="keyword">fi</span></span><br><span class="line">W 代表媒体设计空间中的特征权重列表，每个wi对映的是每个特征<span class="keyword">fi</span>的权重</span><br><span class="line">n 代表当前的代表性媒体个数</span><br><span class="line">输出：</span><br><span class="line">L 代表不同探索级别的代表性媒体</span><br><span class="line">步骤：</span><br><span class="line">1. 将媒体原始设计空间F缩小至二维欧几里得空间F’，并保持媒体特征之间的相互映射方向：F-&gt;F’；F’-&gt;F</span><br><span class="line">2. 基于F’构建特征层次结构H，层次结构中每个节点hi代表了媒体设计空间中的特征<span class="keyword">fi</span>，hr代表H的根节点</span><br><span class="line">3. 遍历M集合中每一个媒体m，计算节点hi相关的特征<span class="keyword">fi</span>所能覆盖到的媒体的个数</span><br><span class="line">4. 自下而上选择H每层的代表性媒体节点</span><br><span class="line">5. 将代表性层级结果赋值给L并返回</span><br><span class="line">REPRESENTATIVE(hi, n)：</span><br><span class="line"><span class="keyword">if</span> not hi.childern <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">return</span> hi</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	left_representative = REPRESENTATIVE(hi[left], n)</span><br><span class="line">	right_representative = REPRESENTATIVE(hi[right], n)</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> left_representative + right_representative <span class="keyword">do</span></span><br><span class="line">        CNF = COUNT_NUMS_NORMAL(hi[k].F)</span><br><span class="line">        hi[k].weight = <span class="built_in">sum</span>(W * CNF)</span><br><span class="line">        hi[k].center = normal_sqrt(hi[k], hi.children)</span><br><span class="line">	<span class="built_in">return</span> <span class="built_in">sort</span>(hi[k].weight + hi[k].center)[-n:]</span><br></pre></td></tr></table></figure></div>
+
+            </div>
+
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/blog/2023/01/03/%E5%AD%A6%E6%9C%AF%E8%AE%B2%E5%BA%A7%E6%97%81%E5%90%AC%E8%AE%B0%E5%BD%95/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">学术讲座旁听记录</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/blog/2023/01/01/hello-world/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Hello World</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96"><span class="nav-text">数据获取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E7%89%B9%E5%BE%81%E7%BC%96%E7%A0%81%E4%B8%8E%E9%99%8D%E7%BB%B4"><span class="nav-text">媒体特征编码与降维</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E8%A1%A8%E6%80%A7%E5%AA%92%E4%BD%93%E7%9A%84%E5%BC%95%E5%AF%BC%E6%80%A7%E6%8E%A2%E7%B4%A2"><span class="nav-text">代表性媒体的引导性探索</span></a></li></ol>
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2023&nbsp;<i class="fa-solid fa-heart icon-animate"></i>&nbsp;<a href="/">WUJIHE. All Rights Reserved.</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.4.4</a>
+        </div>
+        
+        
+        <script async data-pjax defer>
+            function odometer_init(){
+                    let el = document.getElementsByClassName('odometer');
+                    for (i = 0; i < el.length; i++) {
+                        od = new Odometer({
+                            el: el[i],
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    }
+            }
+            odometer_init();
+        </script>
+        <div id="start_time_div" style="display:none">
+            2023/1/1 10:45:14
+        </div>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fa-solid fa-left-right"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fa-solid fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fa-solid fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fa-solid fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fa-solid fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/main.js"></script>
+
+<script src="/blog/js/header-shrink.js"></script>
+
+<script src="/blog/js/back2top.js"></script>
+
+<script src="/blog/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/blog/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/blog/js/lazyload.js"></script>
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/blog/js/toc-toggle.js"></script>
+
+<script src="/blog/js/libs/anime.min.js"></script>
+
+<script src="/blog/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/blog/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
