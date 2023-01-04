@@ -275,16 +275,9 @@
         <section class="archive-item">
             <div class="archive-item-header">
                 <span class="archive-year">2023</span>
-                <span class="archive-year-post-count">[3]</span>
+                <span class="archive-year-post-count">[2]</span>
             </div>
             <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/blog/2023/01/03/%E5%AD%A6%E6%9C%AF%E8%AE%B2%E5%BA%A7%E6%97%81%E5%90%AC%E8%AE%B0%E5%BD%95/"
-                        >学术讲座旁听记录</a>
-                        <span class="article-date">01-03</span>
-                    </li>
                 
                     <li class="article-item">
                         <a class="article-title"
@@ -514,5 +507,20 @@
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

@@ -54,13 +54,4 @@ i\hbar\frac{\partial}{\partial t}\psi=-\frac{\hbar^2}{2m}\nabla^2\psi+V\psi</scr
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">输入：</span><br><span class="line">M 代表媒体集合</span><br><span class="line">F 代表媒体设计空间中的特征列表，每个特征表示为<span class="keyword">fi</span></span><br><span class="line">W 代表媒体设计空间中的特征权重列表，每个wi对映的是每个特征<span class="keyword">fi</span>的权重</span><br><span class="line">n 代表当前的代表性媒体个数</span><br><span class="line">输出：</span><br><span class="line">L 代表不同探索级别的代表性媒体</span><br><span class="line">步骤：</span><br><span class="line">1. 将媒体原始设计空间F缩小至二维欧几里得空间F’，并保持媒体特征之间的相互映射方向：F-&gt;F’；F’-&gt;F</span><br><span class="line">2. 基于F’构建特征层次结构H，层次结构中每个节点hi代表了媒体设计空间中的特征<span class="keyword">fi</span>，hr代表H的根节点</span><br><span class="line">3. 遍历M集合中每一个媒体m，计算节点hi相关的特征<span class="keyword">fi</span>所能覆盖到的媒体的个数</span><br><span class="line">4. 自下而上选择H每层的代表性媒体节点</span><br><span class="line">5. 将代表性层级结果赋值给L并返回</span><br><span class="line">REPRESENTATIVE(hi, n)：</span><br><span class="line"><span class="keyword">if</span> not hi.childern <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">return</span> hi</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	left_representative = REPRESENTATIVE(hi[left], n)</span><br><span class="line">	right_representative = REPRESENTATIVE(hi[right], n)</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> left_representative + right_representative <span class="keyword">do</span></span><br><span class="line">        CNF = COUNT_NUMS_NORMAL(hi[k].F)</span><br><span class="line">        hi[k].weight = <span class="built_in">sum</span>(W * CNF)</span><br><span class="line">        hi[k].center = normal_sqrt(hi[k], hi.children)</span><br><span class="line">	<span class="built_in">return</span> <span class="built_in">sort</span>(hi[k].weight + hi[k].center)[-n:]</span><br></pre></td></tr></table></figure></div>
 ]]></content>
   </entry>
-  <entry>
-    <title>学术讲座旁听记录</title>
-    <url>/blog/2023/01/03/%E5%AD%A6%E6%9C%AF%E8%AE%B2%E5%BA%A7%E6%97%81%E5%90%AC%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>2022年12月29日，旁听了港科王勇老师的学术讲座，受益匪浅，在此选取保存印象深刻的瞬间。</p>
-]]></content>
-      <categories>
-        <category>学术讲座</category>
-      </categories>
-  </entry>
 </search>
