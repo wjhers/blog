@@ -58,4 +58,162 @@
         <tag>URL</tag>
       </tags>
   </entry>
+  <entry>
+    <title>媒体t-SNE降维结果按国家分类</title>
+    <url>/blog/2023/01/06/%E5%AA%92%E4%BD%93t-SNE%E9%99%8D%E7%BB%B4%E7%BB%93%E6%9E%9C%E6%8C%89%E5%9B%BD%E5%AE%B6%E5%88%86%E7%B1%BB/</url>
+    <content><![CDATA[<h1 id="pearson-embedding"><a href="#pearson-embedding" class="headerlink" title="pearson embedding"></a>pearson embedding</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>country</th>
+<th>MDS</th>
+<th>t-SNE</th>
+<th>UMAP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>United States</td>
+<td><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="MDS DR Media of pearson-16729789129891.svg"
+                      alt="MDS DR Media of pearson"
+                ></td>
+<td><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="tSNE DR Media of pearson-16729789730113.svg"
+                      alt="tSNE DR Media of pearson"
+                ></td>
+<td><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="figure_8-16729789255782.svg"
+                      alt="figure_8"
+                ></td>
+</tr>
+<tr>
+<td>Ireland</td>
+<td><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="MDS DR Media of pearson.svg"
+                      alt="MDS DR Media of pearson"
+                ></td>
+<td><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="tSNE DR Media of pearson.svg"
+                      alt="tSNE DR Media of pearson"
+                ></td>
+<td><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="figure_8.svg"
+                      alt="figure_8"
+                ></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="trend-embedding"><a href="#trend-embedding" class="headerlink" title="trend embedding"></a>trend embedding</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>country</th>
+<th>MDS</th>
+<th>t-SNE</th>
+<th>UMAP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>United States</td>
+<td><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="/MDS DR Media of trend.svg"
+                      alt="MDS DR Media of trend"
+                ></td>
+<td><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="/tSNE DR Media of trend.svg"
+                      alt="tSNE DR Media of trend"
+                ></td>
+<td><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="/figure_8-16729879562314.svg"
+                      alt="figure_8"
+                ></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>WWW 会议 关键词共现图</p>
+<p>SIGRR</p>
+<p>ICDE</p>
+<p>目的是什么？与场景融合的 一部分？ 故事的一致性，做一些例子</p>
+<p>先不用点 得到overview</p>
+<p>系统的通用性</p>
+<p>一定时间范围内的有冲突的事件多方媒体报道的问题 我们的方法最好</p>
+<p>图剪的准确？剪的不准确？</p>
+<p>关键词的融合向量匹配？ 关键词朴素向量匹配</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>卷积</title>
+    <url>/blog/2023/01/08/%E5%8D%B7%E7%A7%AF/</url>
+    <content><![CDATA[<h2 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h2><h3 id="平移不变性：位置的变化不影响识别效果。"><a href="#平移不变性：位置的变化不影响识别效果。" class="headerlink" title="平移不变性：位置的变化不影响识别效果。"></a>平移不变性：位置的变化不影响识别效果。</h3><p>$x$的平移会导致$h$的平移，$v$不应该依赖于$(i,j)$</p>
+<script type="math/tex; mode=display">
+h_{i,j} = \sum_{a,b} v_{i,j,a,b}x_{i+a,j+b}</script><script type="math/tex; mode=display">
+v_{i,j,a,b} = v_{a,b}</script><script type="math/tex; mode=display">
+h_{i,j} = \sum_{a,b} v_{a,b}x_{i+a,j+b}</script><h3 id="局部性：不需要看到全局的信息，关注局部信息。"><a href="#局部性：不需要看到全局的信息，关注局部信息。" class="headerlink" title="局部性：不需要看到全局的信息，关注局部信息。"></a>局部性：不需要看到全局的信息，关注局部信息。</h3><p>当评估$h_{i,j}$时，我们不应该用远离$x_{i,j}$的参数，当$|a|,|b|&gt;\Delta$，使得$v_{a,b} = 0$</p>
+<script type="math/tex; mode=display">
+h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}</script><h1 id="二维卷积层"><a href="#二维卷积层" class="headerlink" title="二维卷积层"></a>二维卷积层</h1><p>输入：$n_h \times n_w$</p>
+<p>卷积核：$k_h \times k_w$</p>
+<p>输出：$(n_h - k_h + 1) \times (n_w - k_w + 1)$</p>
+<p>偏移：$b$</p>
+<p><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="image-20230108101326875.png"
+                      alt="image-20230108101326875" style="zoom: 33%;" 
+                ></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>卷积层将输入和核矩阵进行交叉相关，加上偏移后得到输出。</p>
+<p>核矩阵和偏移是可学习的参数。</p>
+<p>核矩阵的大小是超参数。</p>
+<p>卷积不会因为输入特别大导致权重特别大，可以减少参数量。</p>
+<p>训练时抖动下降是合理的，不要只抖动不下降，希望平滑的话可以增加批量大小或者学习率。</p>
+<h2 id="填充"><a href="#填充" class="headerlink" title="填充"></a>填充</h2><p>在输入的四周加入额外的行和列。</p>
+<p><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="image-20230108104314919.png"
+                      alt="image-20230108104314919" style="zoom:33%;" 
+                ></p>
+<p>填充：$p_h$行$p_w$列</p>
+<p>输出：$(n_h - k_h + p_h + 1) \times (n_w - k_w + p_w + 1)$</p>
+<p>通常取：$p_h = k_h - 1$，$p_w = k_w - 1$</p>
+<p>当$k_h$为奇数时，在上下两侧填充$p_h / 2$</p>
+<p>当$k_h$为偶数时，在上侧填充$\lceil p_h/2 \rceil$，在下侧填充$\lfloor p_h/2 \rfloor$</p>
+<h2 id="步幅"><a href="#步幅" class="headerlink" title="步幅"></a>步幅</h2><p><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="image-20230108105053257.png"
+                      alt="image-20230108105053257" style="zoom:33%;" 
+                ></p>
+<p>步幅：高度$s_h$宽度$s_w$</p>
+<p>输出：$\lfloor (n_h - k_h + p_h + s_h)/s_h \rfloor \times \lfloor (n_w - k_w + p_w + s_w)/s_w \rfloor$</p>
+<p>通常取：$p_h = k_h - 1$，$p_w = k_w - 1$</p>
+<p>$\lfloor (n_h + s_h - 1)/s_h \rfloor \times \lfloor (n_w + s_w - 1)/s_w \rfloor$</p>
+<p>如果输入高度和宽度可以被步幅整除：$(n_h / s_h) \times (n_w / s_w)$</p>
+]]></content>
+      <tags>
+        <tag>李沐</tag>
+        <tag>卷积</tag>
+      </tags>
+  </entry>
 </search>
