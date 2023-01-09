@@ -239,6 +239,19 @@ h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}
                      data-src="image-20230109154553029.png"
                       alt="image-20230109154553029" style="zoom:33%;" 
                 ></p>
+<h1 id="1x1卷积层"><a href="#1x1卷积层" class="headerlink" title="1x1卷积层"></a>1x1卷积层</h1><p>$k_h = k_w = 1$。不识别空间模式，只是融合不同通道的信息。相当于输入形状为$n_hn_w\times c_i$，权重为$c_o\times c_i$的全连接层。</p>
+<p><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="image-20230109155242429.png"
+                      alt="image-20230109155242429" style="zoom:33%;" 
+                ></p>
+<h1 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h1><p><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="image-20230109155330007.png"
+                      alt="image-20230109155330007" style="zoom:33%;" 
+                ></p>
 ]]></content>
       <tags>
         <tag>李沐</tag>
