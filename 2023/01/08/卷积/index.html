@@ -314,7 +314,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-file-word"></i>&nbsp;<span>758 Words</span>
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>818 Words</span>
         </span>
     
     
@@ -417,6 +417,9 @@ h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}
                      data-src="image-20230109155330007.png"
                       alt="image-20230109155330007" style="zoom:33%;" 
                 ></p>
+<p>输出通道数是卷积的超参数。</p>
+<p>每个 输入通道有独立的二维卷积核，所有通道结果相加得到一个输出通道结果。</p>
+<p>每个输出通道有独立的三维卷积核。</p>
 
             </div>
 
@@ -706,5 +709,21 @@ h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
