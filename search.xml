@@ -166,11 +166,11 @@
   <entry>
     <title>卷积</title>
     <url>/blog/2023/01/08/%E5%8D%B7%E7%A7%AF/</url>
-    <content><![CDATA[<h1 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h1><h3 id="平移不变性：位置的变化不影响识别效果。"><a href="#平移不变性：位置的变化不影响识别效果。" class="headerlink" title="平移不变性：位置的变化不影响识别效果。"></a>平移不变性：位置的变化不影响识别效果。</h3><p>$x$的平移会导致$h$的平移，$v$不应该依赖于$(i,j)$</p>
+    <content><![CDATA[<h1 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h1><h2 id="平移不变性：位置的变化不影响识别效果。"><a href="#平移不变性：位置的变化不影响识别效果。" class="headerlink" title="平移不变性：位置的变化不影响识别效果。"></a>平移不变性：位置的变化不影响识别效果。</h2><p>$x$的平移会导致$h$的平移，$v$不应该依赖于$(i,j)$</p>
 <script type="math/tex; mode=display">
 h_{i,j} = \sum_{a,b} v_{i,j,a,b}x_{i+a,j+b}</script><script type="math/tex; mode=display">
 v_{i,j,a,b} = v_{a,b}</script><script type="math/tex; mode=display">
-h_{i,j} = \sum_{a,b} v_{a,b}x_{i+a,j+b}</script><h3 id="局部性：不需要看到全局的信息，关注局部信息。"><a href="#局部性：不需要看到全局的信息，关注局部信息。" class="headerlink" title="局部性：不需要看到全局的信息，关注局部信息。"></a>局部性：不需要看到全局的信息，关注局部信息。</h3><p>当评估$h_{i,j}$时，我们不应该用远离$x_{i,j}$的参数，当$|a|,|b|&gt;\Delta$，使得$v_{a,b} = 0$</p>
+h_{i,j} = \sum_{a,b} v_{a,b}x_{i+a,j+b}</script><h2 id="局部性：不需要看到全局的信息，关注局部信息。"><a href="#局部性：不需要看到全局的信息，关注局部信息。" class="headerlink" title="局部性：不需要看到全局的信息，关注局部信息。"></a>局部性：不需要看到全局的信息，关注局部信息。</h2><p>当评估$h_{i,j}$时，我们不应该用远离$x_{i,j}$的参数，当$|a|,|b|&gt;\Delta$，使得$v_{a,b} = 0$</p>
 <script type="math/tex; mode=display">
 h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}</script><h1 id="二维卷积层"><a href="#二维卷积层" class="headerlink" title="二维卷积层"></a>二维卷积层</h1><p>输入：$n_h \times n_w$</p>
 <p>卷积核：$k_h \times k_w$</p>
