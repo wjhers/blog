@@ -166,7 +166,7 @@
   <entry>
     <title>卷积</title>
     <url>/blog/2023/01/08/%E5%8D%B7%E7%A7%AF/</url>
-    <content><![CDATA[<h2 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h2><h3 id="平移不变性：位置的变化不影响识别效果。"><a href="#平移不变性：位置的变化不影响识别效果。" class="headerlink" title="平移不变性：位置的变化不影响识别效果。"></a>平移不变性：位置的变化不影响识别效果。</h3><p>$x$的平移会导致$h$的平移，$v$不应该依赖于$(i,j)$</p>
+    <content><![CDATA[<h1 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h1><h3 id="平移不变性：位置的变化不影响识别效果。"><a href="#平移不变性：位置的变化不影响识别效果。" class="headerlink" title="平移不变性：位置的变化不影响识别效果。"></a>平移不变性：位置的变化不影响识别效果。</h3><p>$x$的平移会导致$h$的平移，$v$不应该依赖于$(i,j)$</p>
 <script type="math/tex; mode=display">
 h_{i,j} = \sum_{a,b} v_{i,j,a,b}x_{i+a,j+b}</script><script type="math/tex; mode=display">
 v_{i,j,a,b} = v_{a,b}</script><script type="math/tex; mode=display">
@@ -182,12 +182,12 @@ h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}
                      data-src="image-20230108101326875.png"
                       alt="image-20230108101326875" style="zoom: 33%;" 
                 ></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>卷积层将输入和核矩阵进行交叉相关，加上偏移后得到输出。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>卷积层将输入和核矩阵进行交叉相关，加上偏移后得到输出。</p>
 <p>核矩阵和偏移是可学习的参数。</p>
 <p>核矩阵的大小是超参数。</p>
 <p>卷积不会因为输入特别大导致权重特别大，可以减少参数量。</p>
 <p>训练时抖动下降是合理的，不要只抖动不下降，希望平滑的话可以增加批量大小或者学习率。</p>
-<h2 id="填充"><a href="#填充" class="headerlink" title="填充"></a>填充</h2><p>在输入的四周加入额外的行和列。</p>
+<h1 id="填充"><a href="#填充" class="headerlink" title="填充"></a>填充</h1><p>在输入的四周加入额外的行和列。</p>
 <p><img  
                      lazyload
                      src="/blog/images/loading.svg"
@@ -199,7 +199,7 @@ h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}
 <p>通常取：$p_h = k_h - 1$，$p_w = k_w - 1$</p>
 <p>当$k_h$为奇数时，在上下两侧填充$p_h / 2$</p>
 <p>当$k_h$为偶数时，在上侧填充$\lceil p_h/2 \rceil$，在下侧填充$\lfloor p_h/2 \rfloor$</p>
-<h2 id="步幅"><a href="#步幅" class="headerlink" title="步幅"></a>步幅</h2><p><img  
+<h1 id="步幅"><a href="#步幅" class="headerlink" title="步幅"></a>步幅</h1><p><img  
                      lazyload
                      src="/blog/images/loading.svg"
                      data-src="image-20230108105053257.png"
@@ -210,6 +210,35 @@ h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}
 <p>通常取：$p_h = k_h - 1$，$p_w = k_w - 1$</p>
 <p>$\lfloor (n_h + s_h - 1)/s_h \rfloor \times \lfloor (n_w + s_w - 1)/s_w \rfloor$</p>
 <p>如果输入高度和宽度可以被步幅整除：$(n_h / s_h) \times (n_w / s_w)$</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>卷积核一般取奇数，卷积核一般为$3\times3$。</p>
+<p>一般卷积参考经典的卷积神经网络。</p>
+<p>卷积层的感受野，随着卷积深度的加深，最后的元素是看到了前面的像素，能够足够多看到图片里面的信息。</p>
+<p>autogulon和nas是什么？</p>
+<p>用小的卷积速度比较快一些。</p>
+<p>一个卷积层是学习图片的一种纹理。</p>
+<h1 id="多输入通道"><a href="#多输入通道" class="headerlink" title="多输入通道"></a>多输入通道</h1><p>彩色图像可能有RGB三个通道，转为灰度图像会丢失信息。</p>
+<p>每个通道都有一个卷积核，结果是所有通道卷积结果的和。</p>
+<p><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="image-20230109153528428.png"
+                      alt="image-20230109153528428" style="zoom:33%;" 
+                ></p>
+<p>输入：$c_i \times n_h \times n_w$</p>
+<p>核：$c_i \times k_h \times k_w$</p>
+<p>输出：$m_h \times m_w$</p>
+<script type="math/tex; mode=display">
+\mathbf{Y} = \sum_{i=0}^{c_i}\mathbf{X}_{i,:,:} \star \mathbf{W}_{i,:,:}</script><h1 id="多个输出通道"><a href="#多个输出通道" class="headerlink" title="多个输出通道"></a>多个输出通道</h1><p>无论有多少输入通道，我们不希望只得到单输出通道。我们希望每个核生成一个输出通道。</p>
+<p>输入：$c_i \times n_h \times n_w$</p>
+<p>核：$c_o \times c_i \times k_h \times k_w$</p>
+<p>输出：$c_o \times m_h \times m_w$</p>
+<script type="math/tex; mode=display">
+\mathbf{Y}_{i,:,:} = \mathbf{X} \star \mathbf{W}_{i,:,:}</script><p><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="image-20230109154553029.png"
+                      alt="image-20230109154553029" style="zoom:33%;" 
+                ></p>
 ]]></content>
       <tags>
         <tag>李沐</tag>
