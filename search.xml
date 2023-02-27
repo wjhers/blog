@@ -287,11 +287,6 @@ h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}
       </tags>
   </entry>
   <entry>
-    <title>2022个人总结</title>
-    <url>/blog/2023/01/09/2022%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>论文优秀句子摘抄</title>
     <url>/blog/2023/01/09/%E8%AE%BA%E6%96%87%E4%BC%98%E7%A7%80%E5%8F%A5%E5%AD%90%E6%91%98%E6%8A%84/</url>
     <content><![CDATA[<ul>
@@ -300,8 +295,18 @@ h_{i,j} = \sum_{a=-\Delta}^{\Delta} \sum_{b=-\Delta}^{\Delta} v_{a,b}x_{i+a,j+b}
 ]]></content>
   </entry>
   <entry>
-    <title>过事儿</title>
-    <url>/blog/2023/01/15/%E8%BF%87%E4%BA%8B%E5%84%BF/</url>
-    <content><![CDATA[]]></content>
+    <title>javaSE-day01</title>
+    <url>/blog/2023/02/21/javaSE-day01/</url>
+    <content><![CDATA[<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>java中共8种基本数据类型，整型（byte，short，int，long），浮点型（float，double），字符型（chart），布尔型（boolean）。</p>
+<p><img  
+                     lazyload
+                     src="/blog/images/loading.svg"
+                     data-src="/image-20230221141706287.png"
+                      alt="image-20230221141706287"
+                ></p>
+]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
   </entry>
 </search>
